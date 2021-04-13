@@ -1,5 +1,6 @@
 package com.example.piano1
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.net.toUri
 import com.example.piano1.data.Note
 import com.example.piano1.databinding.FragmentPianoBinding
 import kotlinx.android.synthetic.main.fragment_piano.view.*
@@ -15,6 +17,7 @@ import java.io.FileOutputStream
 
 
 class PianoLayout : Fragment() {
+    var onSave:((file: Uri) -> Unit)? = null
 
     private var _binding:FragmentPianoBinding? = null
     private val binding get() = _binding!!
@@ -104,7 +107,6 @@ class PianoLayout : Fragment() {
         if(fileName.isNotEmpty() && path != null){
             var fileName = "$fileName.musikk"
             val file = File(path,fileName)
-
                 if(file.exists()) {
                     Toast.makeText(context, "Filename already used", Toast.LENGTH_LONG).show()
                     Log.e("error", "Filename already in use")
@@ -119,7 +121,9 @@ class PianoLayout : Fragment() {
                     }}
                     score.clear()
 
-            }}
+            }
+                this.onSave?.invoke(file.toUri());
+                }
 
         }else {
             Log.e("error","Requirements not met")
