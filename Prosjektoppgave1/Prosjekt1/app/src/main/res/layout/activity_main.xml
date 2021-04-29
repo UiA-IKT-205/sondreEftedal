@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    >
+
+
+   <TextView
+       android:id="@+id/Header_subline"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="#778899"
+       android:text="En enklere hverdag"
+       android:textAlignment="center"
+       android:textColor="@color/black"
+       android:textSize="30dp"
+       app:layout_constraintBottom_toTopOf="@+id/ListeRecyclerView"
+       tools:layout_editor_absoluteX="16dp" />
+
+   <TextView
+       android:id="@+id/Header_headline"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="#778899"
+       android:text="EASY LIST"
+       android:textAlignment="center"
+       android:textColor="@color/black"
+       android:textSize="50dp"
+      app:layout_constraintBottom_toTopOf="@id/Header_subline"/>
+
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/ListeRecyclerView"
+       android:layout_width="match_parent"
+       android:layout_height="640dp"
+       android:layout_marginBottom="16dp"
+       android:padding="4dp"
+       app:layout_constraintBottom_toBottomOf="parent"
+       tools:layout_editor_absoluteX="-16dp"
+       tools:listitem="@layout/list_item" />
+
+   <ImageButton
+       android:id="@+id/addNewListButton"
+       android:layout_width="79dp"
+       android:layout_height="71dp"
+       android:layout_marginEnd="30dp"
+       android:layout_marginBottom="30dp"
+       android:src="@drawable/ic_baseline_add_circle_24"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       android:backgroundTint="#ffff"
+       />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
